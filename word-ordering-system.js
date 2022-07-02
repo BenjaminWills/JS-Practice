@@ -21,14 +21,19 @@ function order(words) {
     }
   });
   // Next we want to remove the numbers from the elements of the array.
-  let rm_arr = [];
   for (let i = 0; i < letterSplit.length; i++) {
-    delete letterSplit[i][indexValues[i]];
-    rm_arr.push(letterSplit[i]);
+    letterSplit[i].splice(letterSplit[i].indexOf(indexValues[i].toString()), 1);
   }
-  return rm_arr;
+  let new_arr = new Array(indexValues.length);
+  for (let i = 0; i < indexValues.length; i++) {
+    // we want to assign each word to its correct position.
+    new_arr[indexValues[i] - 1] = letterSplit[i].join("");
+  }
+  return new_arr.join(" ");
 }
 
-console.log(order("He2llo h3ow ar1e yo4u"));
+console.log(order("Be4n m1y na2me i3s"));
 /*const b = [1, 2, 3];
 console.log(b.indexOf(b[1])); */
+
+//console.log(["h", "e", "l", "l", "o"].splice(1, 1));
